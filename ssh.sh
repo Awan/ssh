@@ -30,7 +30,14 @@ fi
 
 # Ask user to enter the public SSH key.
 
-read -r "Enter public SSH key: " public_key
+read -p "Enter public SSH key: " public_key
+
+# Check if user entered the key or not. 
+
+if [ -z "$public_key" ]; then
+    echo "You didn't provide SSH Public key."
+    exit 1
+fi
 
 # Check if required directories exist on server with correct permissions, create them if not, copy ID and change file permissions.
 
